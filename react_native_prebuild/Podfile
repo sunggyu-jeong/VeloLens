@@ -1,8 +1,6 @@
 source 'https://cdn.cocoapods.org/'
 platform :ios, '18.0'
 
-$VCEnableFrameProcessors = true
-
 require_relative './node_modules/react-native/scripts/react_native_pods'
 inhibit_all_warnings!
 prepare_react_native_project!
@@ -15,12 +13,15 @@ target 'ReactNativePrebuild' do
     :app_path => "#{Pod::Config.instance.installation_root}/"
   )
 
-  # 외부 라이브러리 경로 명시 (VeloLensModule의 의존성 해결을 위해 필수)
-  pod 'VisionCamera', :path => './node_modules/react-native-vision-camera'
-  pod 'RNReanimated', :path => './node_modules/react-native-reanimated'
+  # react-native-worklets-core (Margelo) - VisionCamera Frame Processors 필수
+  pod 'react-native-worklets-core', :path => './node_modules/react-native-worklets-core'
+  # react-native-worklets (Software Mansion) - react-native-reanimated v4 필수
   pod 'RNWorklets', :path => './node_modules/react-native-worklets'
 
-  # 우리가 만든 JSI 모듈
+  pod 'VisionCamera', :path => './node_modules/react-native-vision-camera'
+  pod 'RNReanimated', :path => './node_modules/react-native-reanimated'
+
+  # VeloLens 커스텀 JSI 모듈
   pod 'VeloLensModule', :path => '../velolens.podspec'
 end
 

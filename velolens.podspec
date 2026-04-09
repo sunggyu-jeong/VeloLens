@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
 
   s.pod_target_xcconfig = {
     "CLANG_CXX_LANGUAGE_STANDARD" => "c++17",
-    "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Headers/Public/React-jsi"
+    "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Headers/Public/React-jsi $(PODS_ROOT)/Headers/Public/VisionCamera"
   }
 end
