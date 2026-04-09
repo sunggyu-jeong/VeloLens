@@ -1,8 +1,36 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
-    "types": ["jest"]
+    "types": ["jest"],
+    // Strict Mode (전체 활성화)
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    // 추가 엄격 검사
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    // 경로 별칭 (Step 2에서 활용)
+    "baseUrl": ".",
+    "paths": {
+      "~app/*": ["src/app/*"],
+      "~processes/*": ["src/processes/*"],
+      "~pages/*": ["src/pages/*"],
+      "~widgets/*": ["src/widgets/*"],
+      "~features/*": ["src/features/*"],
+      "~entities/*": ["src/entities/*"],
+      "~shared/*": ["src/shared/*"]
+    }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["**/node_modules", "**/Pods"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "*.ts", "*.tsx", "__tests__/**/*.ts", "__tests__/**/*.tsx"],
+  "exclude": ["**/node_modules", "**/Pods", "android", "ios"]
 }
