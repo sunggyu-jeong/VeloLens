@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.dependency "React-Core"
   s.dependency "React-jsi"
   s.dependency "VisionCamera"
+  s.dependency "VisionCamera/FrameProcessors"
 
   s.pod_target_xcconfig = {
     "CLANG_CXX_LANGUAGE_STANDARD" => "c++17",
