@@ -16,7 +16,7 @@ target 'ReactNativePrebuild' do
   # 외부 라이브러리 경로 명시 (VeloLensModule의 의존성 해결을 위해 필수)
   pod 'VisionCamera', :path => './node_modules/react-native-vision-camera'
   pod 'RNReanimated', :path => './node_modules/react-native-reanimated'
-  pod 'RNWorklets', :path => './node_modules/react-native-worklets-core'
+  pod 'react-native-worklets-core', :path => './node_modules/react-native-worklets-core'
 
   # 우리가 만든 JSI 모듈
   pod 'VeloLensModule', :path => '../velolens.podspec'
