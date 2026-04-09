@@ -14,6 +14,7 @@ target 'ReactNativePrebuild' do
   )
 
   pod 'react-native-worklets-core', :path => './node_modules/react-native-worklets-core'
+  pod 'RNWorklets', :path => './node_modules/react-native-worklets'
   pod 'VisionCamera', :path => './node_modules/react-native-vision-camera'
   pod 'RNReanimated', :path => './node_modules/react-native-reanimated'
 
