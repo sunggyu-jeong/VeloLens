@@ -13,15 +13,10 @@ target 'ReactNativePrebuild' do
     :app_path => "#{Pod::Config.instance.installation_root}/"
   )
 
-  # react-native-worklets-core (Margelo) - VisionCamera Frame Processors 필수
   pod 'react-native-worklets-core', :path => './node_modules/react-native-worklets-core'
-  # react-native-worklets (Software Mansion) - react-native-reanimated v4 필수
-  pod 'RNWorklets', :path => './node_modules/react-native-worklets'
-
   pod 'VisionCamera', :path => './node_modules/react-native-vision-camera'
   pod 'RNReanimated', :path => './node_modules/react-native-reanimated'
 
-  # VeloLens 커스텀 JSI 모듈
   pod 'VeloLensModule', :path => '../velolens.podspec'
 end
 

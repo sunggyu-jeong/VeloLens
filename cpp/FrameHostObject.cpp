@@ -20,13 +20,13 @@ Value FrameHostObject::get(Runtime& rt, const PropNameID& name) {
 void FrameHostObject::set(Runtime&, const PropNameID&, const Value&) {}
 
 std::vector<PropNameID> FrameHostObject::getPropertyNames(Runtime& rt) {
-  return {
-    PropNameID::forAscii(rt, "width"),
-    PropNameID::forAscii(rt, "height"),
-    PropNameID::forAscii(rt, "bytesPerRow"),
-    PropNameID::forAscii(rt, "timestamp"),
-    PropNameID::forAscii(rt, "dataPointer"),
-  };
+  std::vector<PropNameID> props;
+  props.emplace_back(PropNameID::forAscii(rt, "width"));
+  props.emplace_back(PropNameID::forAscii(rt, "height"));
+  props.emplace_back(PropNameID::forAscii(rt, "bytesPerRow"));
+  props.emplace_back(PropNameID::forAscii(rt, "timestamp"));
+  props.emplace_back(PropNameID::forAscii(rt, "dataPointer"));
+  return props;
 }
 
 } // namespace velolens

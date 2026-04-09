@@ -19,9 +19,9 @@ Value VeloLensModule::get(Runtime& rt, const PropNameID& name) {
 void VeloLensModule::set(Runtime&, const PropNameID&, const Value&) {}
 
 std::vector<PropNameID> VeloLensModule::getPropertyNames(Runtime& rt) {
-  return {
-    PropNameID::forAscii(rt, "ping"),
-  };
+  std::vector<PropNameID> props;
+  props.emplace_back(PropNameID::forAscii(rt, "ping"));
+  return props;
 }
 
 Value VeloLensModule::makeFrameObject(Runtime& rt, FrameMetadata meta) {
