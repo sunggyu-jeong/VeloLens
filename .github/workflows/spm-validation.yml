@@ -1,0 +1,54 @@
+name: SPM Prebuild Validation
+
+on:
+  push:
+    branches: [ feature/pitch-analysis ]
+  pull_request:
+    branches: [ feature/pitch-analysis ]
+
+jobs:
+  validate-spm:
+    runs-on: macos-15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: react_native_prebuild/pnpm-lock.yaml
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install xcodeproj gem
+        run: gem install xcodeproj
+
+      - name: Initialize Prebuild Directory
+        working-directory: react_native_prebuild
+        run: |
+          ruby create_project.rb
+          pnpm install
+
+      - name: Build XCFrameworks
+        working-directory: react_native_prebuild
+        run: |
+          chmod +x build_xcframeworks.sh
+          ./build_xcframeworks.sh
+        env:
+          # CI 환경에서 xcodebuild 속도를 위해 quiet 모드 유지
+          CONFIGURATION: Release
+
+      - name: Verify Package.swift
+        working-directory: react_native_prebuild
+        run: swift build
