@@ -1,6 +1,8 @@
 source 'https://cdn.cocoapods.org/'
 platform :ios, '18.0'
 
+$VCEnableFrameProcessors = true
+
 require_relative './node_modules/react-native/scripts/react_native_pods'
 inhibit_all_warnings!
 prepare_react_native_project!
