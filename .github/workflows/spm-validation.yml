@@ -38,7 +38,7 @@ jobs:
         working-directory: react_native_prebuild
         run: |
           ruby create_project.rb
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
       - name: Build XCFrameworks
         working-directory: react_native_prebuild
